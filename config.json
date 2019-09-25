@@ -1,0 +1,14 @@
+{
+  "host": "mastodon.org.ua",
+  "name": "Mastodon.org.ua Bot",
+  "website": "https://mastodon.org.ua",
+  "clientId": "",
+  "authCode": "",
+  "redirectUri": "urn:ietf:wg:oauth:2.0:oob",
+  "clientSecret": "",
+  "accessToken": "",
+  "introMessage": "intro",
+  "admins": ["admin", "staspikin@social.staspikin.com"],
+  "welcomeMessage": "Welcome",
+  "timer": 6000
+}

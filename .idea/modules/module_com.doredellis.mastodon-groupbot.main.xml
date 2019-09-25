@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_com.doredellis.mastodon-groupbot.main" default="compile.module.com.doredellis.mastodon-groupbot.main">
+  <dirname property="module.com.doredellis.mastodon-groupbot.main.basedir" file="${ant.file.module_com.doredellis.mastodon-groupbot.main}"/>
+  
+  <property name="module.jdk.home.com.doredellis.mastodon-groupbot.main" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.com.doredellis.mastodon-groupbot.main" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.com.doredellis.mastodon-groupbot.main" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.com.doredellis.mastodon-groupbot.main" value="-encoding UTF-8 -source 11 -target 11 ${compiler.args}"/>
+  
+  <property name="com.doredellis.mastodon-groupbot.main.output.dir" value="${module.com.doredellis.mastodon-groupbot.main.basedir}/../../out/production/classes"/>
+  <property name="com.doredellis.mastodon-groupbot.main.testoutput.dir" value="${module.com.doredellis.mastodon-groupbot.main.basedir}/../../out/production/classes"/>
+  
+  <path id="com.doredellis.mastodon-groupbot.main.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="com.doredellis.mastodon-groupbot.main.module.production.classpath">
+    <path refid="${module.jdk.classpath.com.doredellis.mastodon-groupbot.main}"/>
+    <path refid="library.gradle:_com.github.sys1yagi.mastodon4j:mastodon4j-rx:1.7.0.classpath"/>
+    <path refid="library.gradle:_com.github.sys1yagi.mastodon4j:mastodon4j:1.7.0.classpath"/>
+    <path refid="library.gradle:_com.xenomachina:kotlin-argparser:2.0.7.classpath"/>
+    <path refid="library.gradle:_org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.50.classpath"/>
+    <path refid="library.gradle:_org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.50.classpath"/>
+    <path refid="library.gradle:_com.squareup.okhttp3:okhttp:3.6.0.classpath"/>
+    <path refid="library.gradle:_com.google.code.gson:gson:2.8.0.classpath"/>
+    <path refid="library.gradle:_io.reactivex.rxjava2:rxjava:2.0.8.classpath"/>
+    <path refid="library.gradle:_com.xenomachina:xenocom:0.0.7.classpath"/>
+    <path refid="library.gradle:_org.jetbrains.kotlin:kotlin-stdlib:1.3.50.classpath"/>
+    <path refid="library.gradle:_com.squareup.okio:okio:1.11.0.classpath"/>
+    <path refid="library.gradle:_org.reactivestreams:reactive-streams:1.0.0.classpath"/>
+    <path refid="library.gradle:_org.jetbrains.kotlin:kotlin-stdlib-common:1.3.50.classpath"/>
+    <path refid="library.gradle:_org.jetbrains:annotations:13.0.classpath"/>
+  </path>
+  
+  <path id="com.doredellis.mastodon-groupbot.main.runtime.production.module.classpath">
+    <pathelement location="${com.doredellis.mastodon-groupbot.main.output.dir}"/>
+    <path refid="library.gradle:_com.github.sys1yagi.mastodon4j:mastodon4j-rx:1.7.0.classpath"/>
+    <path refid="library.gradle:_com.github.sys1yagi.mastodon4j:mastodon4j:1.7.0.classpath"/>
+    <path refid="library.gradle:_com.xenomachina:kotlin-argparser:2.0.7.classpath"/>
+    <path refid="library.gradle:_org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.50.classpath"/>
+    <path refid="library.gradle:_org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.50.classpath"/>
+    <path refid="library.gradle:_com.squareup.okhttp3:okhttp:3.6.0.classpath"/>
+    <path refid="library.gradle:_com.google.code.gson:gson:2.8.0.classpath"/>
+    <path refid="library.gradle:_io.reactivex.rxjava2:rxjava:2.0.8.classpath"/>
+    <path refid="library.gradle:_com.xenomachina:xenocom:0.0.7.classpath"/>
+    <path refid="library.gradle:_org.jetbrains.kotlin:kotlin-stdlib:1.3.50.classpath"/>
+    <path refid="library.gradle:_com.squareup.okio:okio:1.11.0.classpath"/>
+    <path refid="library.gradle:_org.reactivestreams:reactive-streams:1.0.0.classpath"/>
+    <path refid="library.gradle:_org.jetbrains.kotlin:kotlin-stdlib-common:1.3.50.classpath"/>
+    <path refid="library.gradle:_org.jetbrains:annotations:13.0.classpath"/>
+  </path>
+  
+  <path id="com.doredellis.mastodon-groupbot.main.module.classpath">
+    <path refid="${module.jdk.classpath.com.doredellis.mastodon-groupbot.main}"/>
+    <pathelement location="${com.doredellis.mastodon-groupbot.main.output.dir}"/>
+    <path refid="library.gradle:_com.github.sys1yagi.mastodon4j:mastodon4j-rx:1.7.0.classpath"/>
+    <path refid="library.gradle:_com.github.sys1yagi.mastodon4j:mastodon4j:1.7.0.classpath"/>
+    <path refid="library.gradle:_com.xenomachina:kotlin-argparser:2.0.7.classpath"/>
+    <path refid="library.gradle:_org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.50.classpath"/>
+    <path refid="library.gradle:_org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.50.classpath"/>
+    <path refid="library.gradle:_com.squareup.okhttp3:okhttp:3.6.0.classpath"/>
+    <path refid="library.gradle:_com.google.code.gson:gson:2.8.0.classpath"/>
+    <path refid="library.gradle:_io.reactivex.rxjava2:rxjava:2.0.8.classpath"/>
+    <path refid="library.gradle:_com.xenomachina:xenocom:0.0.7.classpath"/>
+    <path refid="library.gradle:_org.jetbrains.kotlin:kotlin-stdlib:1.3.50.classpath"/>
+    <path refid="library.gradle:_com.squareup.okio:okio:1.11.0.classpath"/>
+    <path refid="library.gradle:_org.reactivestreams:reactive-streams:1.0.0.classpath"/>
+    <path refid="library.gradle:_org.jetbrains.kotlin:kotlin-stdlib-common:1.3.50.classpath"/>
+    <path refid="library.gradle:_org.jetbrains:annotations:13.0.classpath"/>
+  </path>
+  
+  <path id="com.doredellis.mastodon-groupbot.main.runtime.module.classpath">
+    <pathelement location="${com.doredellis.mastodon-groupbot.main.output.dir}"/>
+    <path refid="library.gradle:_com.github.sys1yagi.mastodon4j:mastodon4j-rx:1.7.0.classpath"/>
+    <path refid="library.gradle:_com.github.sys1yagi.mastodon4j:mastodon4j:1.7.0.classpath"/>
+    <path refid="library.gradle:_com.xenomachina:kotlin-argparser:2.0.7.classpath"/>
+    <path refid="library.gradle:_org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.50.classpath"/>
+    <path refid="library.gradle:_org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.50.classpath"/>
+    <path refid="library.gradle:_com.squareup.okhttp3:okhttp:3.6.0.classpath"/>
+    <path refid="library.gradle:_com.google.code.gson:gson:2.8.0.classpath"/>
+    <path refid="library.gradle:_io.reactivex.rxjava2:rxjava:2.0.8.classpath"/>
+    <path refid="library.gradle:_com.xenomachina:xenocom:0.0.7.classpath"/>
+    <path refid="library.gradle:_org.jetbrains.kotlin:kotlin-stdlib:1.3.50.classpath"/>
+    <path refid="library.gradle:_com.squareup.okio:okio:1.11.0.classpath"/>
+    <path refid="library.gradle:_org.reactivestreams:reactive-streams:1.0.0.classpath"/>
+    <path refid="library.gradle:_org.jetbrains.kotlin:kotlin-stdlib-common:1.3.50.classpath"/>
+    <path refid="library.gradle:_org.jetbrains:annotations:13.0.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.com.doredellis.mastodon-groupbot.main">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.com.doredellis.mastodon-groupbot.main">
+    <patternset refid="excluded.from.module.com.doredellis.mastodon-groupbot.main"/>
+  </patternset>
+  
+  <path id="com.doredellis.mastodon-groupbot.main.module.sourcepath">
+    <dirset dir="${module.com.doredellis.mastodon-groupbot.main.basedir}/../../src/main">
+      <include name="java"/>
+      <include name="kotlin"/>
+      <include name="resources"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.com.doredellis.mastodon-groupbot.main" depends="compile.module.com.doredellis.mastodon-groupbot.main.production,compile.module.com.doredellis.mastodon-groupbot.main.tests" description="Compile module com.doredellis.mastodon-groupbot.main"/>
+  
+  <target name="compile.module.com.doredellis.mastodon-groupbot.main.production" depends="register.custom.compilers" description="Compile module com.doredellis.mastodon-groupbot.main; production classes">
+    <mkdir dir="${com.doredellis.mastodon-groupbot.main.output.dir}"/>
+    <javac2 destdir="${com.doredellis.mastodon-groupbot.main.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.com.doredellis.mastodon-groupbot.main}/javac">
+      <compilerarg line="${compiler.args.com.doredellis.mastodon-groupbot.main}"/>
+      <bootclasspath refid="com.doredellis.mastodon-groupbot.main.module.bootclasspath"/>
+      <classpath refid="com.doredellis.mastodon-groupbot.main.module.production.classpath"/>
+      <src refid="com.doredellis.mastodon-groupbot.main.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.com.doredellis.mastodon-groupbot.main"/>
+    </javac2>
+    
+    <copy todir="${com.doredellis.mastodon-groupbot.main.output.dir}">
+      <fileset dir="${module.com.doredellis.mastodon-groupbot.main.basedir}/../../src/main/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.com.doredellis.mastodon-groupbot.main.basedir}/../../src/main/kotlin">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.com.doredellis.mastodon-groupbot.main.basedir}/../../src/main/resources">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.com.doredellis.mastodon-groupbot.main.tests" depends="register.custom.compilers,compile.module.com.doredellis.mastodon-groupbot.main.production" description="compile module com.doredellis.mastodon-groupbot.main; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.com.doredellis.mastodon-groupbot.main" description="cleanup module">
+    <delete dir="${com.doredellis.mastodon-groupbot.main.output.dir}"/>
+    <delete dir="${com.doredellis.mastodon-groupbot.main.testoutput.dir}"/>
+  </target>
+</project>
