@@ -2,3 +2,5 @@
 /.gradle/
 /build/
 /out/
+config_prod.json
+state_prod.json

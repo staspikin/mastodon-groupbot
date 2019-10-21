@@ -3,7 +3,9 @@ import bot.GroupBot
 import bot.OpenGroupBot
 import bot.PremoderatedGroupBot
 import com.xenomachina.argparser.ArgParser
-import common.*
+import common.Arguments
+import common.Config
+import common.runMode
 import java.lang.Thread.sleep
 
 
@@ -13,7 +15,7 @@ fun main(args: Array<String>) {
     var config = Config()
 
     if (parsedArgs.init) {
-        config.buildInteractive(parsedArgs.configFile)
+        config.read(parsedArgs.configFile)
         val groupbot = OpenGroupBot(config, parsedArgs.stateFile)
         groupbot.runBot(parsedArgs.init)
     }

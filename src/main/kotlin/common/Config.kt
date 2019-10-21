@@ -16,7 +16,7 @@ class Config {
     private lateinit var redirectUri:    String
     private lateinit var clientSecret:   String
     private lateinit var accessToken:    String
-    private lateinit var admins:         MutableList<String>
+    private var admins: MutableList<String> = mutableListOf()
     private lateinit var introMessage:   String
     private lateinit var welcomeMessage: String
     private var timer:                   Int = 0
@@ -95,7 +95,7 @@ class Config {
         println("Enter Bot Admins")
         val admin = readLine()!!
         this.admins.add(admin)
-        this.store()
+        this.store(filename)
     }
 
     fun host(): String {

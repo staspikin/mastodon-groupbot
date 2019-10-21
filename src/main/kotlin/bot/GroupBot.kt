@@ -16,8 +16,8 @@ import common.State
 import okhttp3.OkHttpClient
 
 abstract class GroupBot(config: Config, stateFile: String) {
-    var client: MastodonClient
-    var account: Account
+    lateinit var client: MastodonClient
+    lateinit var account: Account
     var state = State()
     var notifications: MutableList<Notification> = mutableListOf()
     var followers: MutableList<String> = mutableListOf()
@@ -27,10 +27,14 @@ abstract class GroupBot(config: Config, stateFile: String) {
 
     init {
         state.read(stateFile)
-        client = MastodonClient.Builder(config.host(), OkHttpClient.Builder(), Gson())
-            .accessToken(config.accessToken())
-            .build()
-        account = Accounts(client).getVerifyCredentials().execute()
+        try {
+            client = MastodonClient.Builder(config.host(), OkHttpClient.Builder(), Gson())
+                .accessToken(config.accessToken())
+                .build()
+            account = Accounts(client).getVerifyCredentials().execute()
+        } catch (e: Exception) {
+            println(e)
+        }
     }
 
     open fun initialize() {
@@ -39,52 +43,79 @@ abstract class GroupBot(config: Config, stateFile: String) {
     private fun readNewNotifications() {
         var isInState = false
 
-        var notificationsRequest = Notifications(client).getNotifications().execute()
-        while ((notificationsRequest.link != null) and (!isInState)) {
-            notificationsRequest.part.forEach {
-                if (it.id !in state.notifications) {
-                    if (it !in notifications) notifications.add(it)
-                } else {
-                    isInState = true
+        try {
+
+            var notificationsRequest = Notifications(client).getNotifications().execute()
+            while ((notificationsRequest.link != null) and (!isInState)) {
+                notificationsRequest.part.forEach {
+                    if (it.id !in state.notifications) {
+                        if (it !in notifications) notifications.add(it)
+                    } else {
+                        isInState = true
+                    }
                 }
+                notificationsRequest =
+                    Notifications(client).getNotifications(notificationsRequest.nextRange()).execute()
             }
-            notificationsRequest = Notifications(client).getNotifications(notificationsRequest.nextRange()).execute()
+        } catch (e: Exception) {
+            println(e)
         }
     }
 
     private fun readFollowers() {
-        var followersRequest = Accounts(client).getFollowers(account.id).execute()
-        while (followersRequest.link != null) {
-            followersRequest.part.forEach {
-                if (it.acct !in followers) followers.add(it.acct)
+        try {
+            var followersRequest = Accounts(client).getFollowers(account.id).execute()
+            while (followersRequest.link != null) {
+                followersRequest.part.forEach {
+                    if (it.acct !in followers) followers.add(it.acct)
+                }
+                followersRequest = Accounts(client).getFollowers(account.id, followersRequest.nextRange()).execute()
             }
-            followersRequest = Accounts(client).getFollowers(account.id, followersRequest.nextRange()).execute()
+        } catch (e: Exception) {
+            println(e)
         }
     }
 
     fun readFollowing() {
-        var followingRequest = Accounts(client).getFollowing(account.id).execute()
-        while (followingRequest.link != null) {
-            followingRequest.part.forEach {
-                if (it.acct !in following) following.add(it.acct)
+        try {
+
+            var followingRequest = Accounts(client).getFollowing(account.id).execute()
+            while (followingRequest.link != null) {
+                followingRequest.part.forEach {
+                    if (it.acct !in following) following.add(it.acct)
+                }
+                followingRequest = Accounts(client).getFollowing(account.id, followingRequest.nextRange()).execute()
             }
-            followingRequest = Accounts(client).getFollowing(account.id, followingRequest.nextRange()).execute()
+        } catch (e: Exception) {
+            println(e)
         }
     }
 
     fun sendPrivateMessage(status: Status?, message: String) {
-        Statuses(client).postStatus(
-            message,
-            status?.id, null, false, null, Status.Visibility.Private
-        ).execute()
+        try {
+            Statuses(client).postStatus(
+                message,
+                status?.id, null, false, null, Status.Visibility.Private
+            ).execute()
+        } catch (e: Exception) {
+            println(e)
+        }
     }
 
     fun boost(status: Status) {
-        if (!status.isReblogged) Statuses(client).postReblog(status.id).execute()
+        try {
+            if (!status.isReblogged) Statuses(client).postReblog(status.id).execute()
+        } catch (e: Exception) {
+            println(e)
+        }
     }
 
     fun sendPublicMessage(message: String) {
-        Statuses(client).postStatus(message, null, null, false, null).execute()
+        try {
+            Statuses(client).postStatus(message, null, null, false, null).execute()
+        } catch (e: Exception) {
+            println(e)
+        }
     }
 
     fun isMutedTagInList(tagList: List<Tag>): Boolean {
