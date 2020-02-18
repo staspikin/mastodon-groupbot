@@ -134,6 +134,7 @@ abstract class GroupBot(config: Config, stateFile: String) {
         readNewNotifications()
         readFollowers()
         parseNotifications(init)
+        notifications.clear()
     }
 
     fun processAdminCommands(status: Status) {
